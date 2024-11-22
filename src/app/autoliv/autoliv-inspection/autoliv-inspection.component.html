@@ -1,0 +1,147 @@
+<nz-page-header class="header">
+  <nz-page-header-title>检验指导书及巡检记录</nz-page-header-title>
+</nz-page-header>
+
+<ng-container>
+  <nz-card class="form-card" nzTitle="产品检验指导书">
+    <div style="text-align: right">
+      <button nz-button nzType="primary" (click)="onClickNavigateToProductInspectionInstruction()">
+        产品检验指导书
+      </button>
+      <nz-divider nzType="vertical"></nz-divider>
+      <nz-upload
+          nzAction="/api/Files?bucket=icnc-erp-autoliv-spec"
+          nzAccept="application/pdf"
+          [nzShowButton]="true"
+          (nzChange)="onUploadProductIns($event)"
+          [nzPreview]="handlePreview"
+        >
+        <button nz-button>
+          <span nz-icon nzType="upload"></span>
+          上传
+        </button>
+      </nz-upload>
+    </div>
+  </nz-card>
+</ng-container> 
+
+<ng-container>
+  <nz-card class="form-card" nzTitle="检验设备操作指导书">
+    <div style="text-align: right">
+      <button nz-button nzType="primary" (click)="onClickDigitalMeter()">
+        数显千分尺
+      </button>
+      <nz-divider nzType="vertical"></nz-divider>
+      <button nz-button nzType="primary" (click)="onClickAirGauge()">
+        气动量仪
+      </button>
+      <nz-divider nzType="vertical"></nz-divider>
+      <button nz-button nzType="primary" (click)="onClickProfiler()">
+        轮廓仪
+      </button>
+      <nz-divider nzType="vertical"></nz-divider>
+      <button nz-button nzType="primary" (click)="onClickProjector()">
+        投影仪
+      </button>
+    </div>
+  </nz-card>
+</ng-container> 
+
+<ng-container>
+  <nz-card class="form-card" nzTitle="巡检，自检记录">
+    <div style="text-align: right">
+      <button nz-button nzType="primary" (click)="onClickNavigateToPatrolInspection()">
+        巡检
+      </button>
+      <nz-divider nzType="vertical"></nz-divider>
+      <button nz-button nzType="primary" (click)="onClickNavigateToSelfCheck()">
+        自检
+      </button>
+      <nz-divider nzType="vertical"></nz-divider>
+      <button nz-button nzType="primary" (click)="onUploadInsSelfTable()">
+        上传
+      </button>
+    </div>
+  </nz-card>
+</ng-container> 
+
+<ng-container>
+  <nz-card class="form-card" nzTitle="检验设备校验记录，证书">
+    <div style="text-align: right">
+      <button nz-button nzType="primary" (click)="onClickNavigateToInspectorCheckRecord()">
+        检验设备校验记录
+      </button>
+      <nz-divider nzType="vertical"></nz-divider>
+      <nz-upload
+          nzAction="/api/Files?bucket=icnc-erp-autoliv-spec"
+          nzAccept="application/pdf"
+          [nzShowButton]="true"
+          (nzChange)="onUploadInspectorCheck($event)"
+          [nzPreview]="handlePreview"
+        >
+        <button nz-button>
+          <span nz-icon nzType="upload"></span>
+          上传
+        </button>
+      </nz-upload>
+    </div>
+  </nz-card>
+</ng-container> 
+
+<ng-container>
+  <nz-card class="form-card" nzTitle="巡检，自检异常记录">
+    <form nz-form [formGroup]="form">
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6" nzRequired>机台号</nz-form-label>
+        <nz-form-control [nzSpan]="6">
+          <input nz-input formControlName="machineCode" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6">日期</nz-form-label>
+        <nz-form-control [nzSpan]="6">
+          <nz-range-picker formControlName="mainRange"></nz-range-picker>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+    <nz-divider></nz-divider>
+    <div style="text-align: right">
+      <button nz-button nzType="primary" (click)="onClickSearchButton()">
+        搜索
+      </button>
+      <nz-divider nzType="vertical"></nz-divider>
+      <button nz-button nzType="primary" (click)="onUploadMain()">
+        上传
+      </button>
+    </div>
+
+
+    <nz-table
+      #exceptionTable
+      [nzSize]="'middle'"
+      [nzData]="data"
+      [nzBordered]="true"
+      [nzPageSizeOptions]="[20, 40, 60, 80, 100, 1000]"
+      [nzShowSizeChanger]="true"
+      [nzPageSize]="100"
+    >
+      <thead>
+        <tr>
+          <th>日期</th>
+          <th>机台号</th>
+        </tr>
+      </thead>
+  
+      <tbody>
+        <tr *ngFor="let item of exceptionTable.data">
+          <td>
+            <a (click)="onClickNavigateToDoc(item)" style="color:blue">
+            {{ item.entryTime }}
+            </a>
+          </td>
+          <td>{{ item.machineCode }}</td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-card>
+</ng-container>

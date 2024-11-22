@@ -1,0 +1,18 @@
+<nz-select
+  nzMode="default"
+  nzPlaceHolder="搜索刀具"
+  nzAllowClear
+  nzShowSearch
+  nzServerSearch
+  [(ngModel)]="selectedTool"
+  (nzOnSearch)="onSearch($event)"
+  (ngModelChange)="onModelChange($event)"
+>
+  <ng-container *ngFor="let option of options">
+    <nz-option *ngIf="!isLoading" [nzValue]="option" [nzLabel]="option.name!">
+    </nz-option>
+  </ng-container>
+  <nz-option *ngIf="isLoading" nzDisabled nzCustomContent>
+    <i nz-icon nzType="loading" class="loading-icon"></i> Loading Data...
+  </nz-option>
+</nz-select>

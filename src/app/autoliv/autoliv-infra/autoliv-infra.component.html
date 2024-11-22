@@ -1,0 +1,30 @@
+<nz-page-header class="header">
+  <nz-page-header-title>产品基础信息</nz-page-header-title>
+  <nz-page-header-extra>
+    <button nz-button nzType="primary" (click)="onClickInputMachineCode()">
+      <span nz-icon nzType="form"></span>
+      输入机台号
+    </button>
+  </nz-page-header-extra>
+  <nz-page-header-content>
+    <div class="content">
+      <div class="main">
+        <nz-descriptions nzSize="default" nzBordered [nzColumn]="1" style="font-size: 30px;">
+          <nz-descriptions-item nzTitle="产品名称">{{ productName }}</nz-descriptions-item>
+
+          <nz-descriptions-item nzTitle="产品图号">{{ drawingCode }}</nz-descriptions-item>
+
+          <nz-descriptions-item nzTitle="产品编码">{{ productCode }}</nz-descriptions-item>
+
+          <nz-descriptions-item nzTitle="产品材料（材质与规格）">{{ productMaterial }}</nz-descriptions-item>
+
+          <nz-descriptions-item nzTitle="产品重量，规格">{{ productWeight }}</nz-descriptions-item>
+
+          <nz-descriptions-item nzTitle="产品本序加工模式">{{ productProcessing }}</nz-descriptions-item>
+
+          <nz-descriptions-item nzTitle="特殊特性">{{ productSpec }}</nz-descriptions-item>
+        </nz-descriptions>
+      </div>
+    </div>
+  </nz-page-header-content>
+</nz-page-header>

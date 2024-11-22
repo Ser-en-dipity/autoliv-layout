@@ -1,0 +1,22 @@
+<nz-select
+  [nzMode]="multiple ? 'multiple' : 'default'"
+  nzPlaceHolder="选择包装材料"
+  nzAllowClear
+  nzShowSearch
+  nzServerSearch
+  [(ngModel)]="selectedPkgMaterial"
+  (nzOnSearch)="onSearch($event)"
+  (ngModelChange)="onModelChange($event)"
+>
+  <ng-container *ngFor="let option of optionList">
+    <nz-option
+      *ngIf="!isLoading"
+      [nzValue]="option"
+      [nzLabel]="option | customerOptionLabel"
+    >
+    </nz-option>
+  </ng-container>
+  <nz-option *ngIf="isLoading" nzDisabled nzCustomContent>
+    <i nz-icon nzType="loading" class="loading-icon"></i> Loading Data...
+  </nz-option>
+</nz-select>

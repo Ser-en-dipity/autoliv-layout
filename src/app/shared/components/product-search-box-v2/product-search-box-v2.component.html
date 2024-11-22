@@ -1,0 +1,38 @@
+<form nz-form [formGroup]="form">
+	<nz-form-item>
+		<nz-form-label [nzSpan]="6">客户</nz-form-label>
+		<nz-form-control [nzSpan]="12">
+			<app-customer-search-box [multiple]="true" (customers)="onGetCustomers($event)"
+				[preSelectedCustomerIds]="preSelectedCustomerIds"></app-customer-search-box>
+		</nz-form-control>
+	</nz-form-item>
+
+	<nz-form-item>
+		<nz-form-label [nzSpan]="6">表面处理</nz-form-label>
+		<nz-form-control [nzSpan]="7">
+			<nz-select formControlName="finish" nzAllowClear nzPlaceHolder="请选择表面处理">
+				<nz-option *ngFor="let opt of finishOptions" [nzLabel]="opt | finishLabel"
+					[nzValue]="opt"></nz-option>
+			</nz-select>
+		</nz-form-control>
+	</nz-form-item>
+
+	<nz-form-item>
+		<nz-form-label [nzSpan]="6">材料</nz-form-label>
+		<nz-form-control [nzSpan]="7">
+			<nz-select formControlName="material" nzAllowClear nzPlaceHolder="请选择材料">
+				<nz-option *ngFor="let opt of materialOptions" [nzLabel]="opt | materialLabel"
+					[nzValue]="opt"></nz-option>
+			</nz-select>
+		</nz-form-control>
+	</nz-form-item>
+
+	<nz-form-item>
+		<nz-form-label [nzSpan]="6">名称片段</nz-form-label>
+		<nz-form-control [nzSpan]="7">
+			<input nz-input formControlName="code_or_name_search" type="text" />
+		</nz-form-control>
+	</nz-form-item>
+
+
+</form>

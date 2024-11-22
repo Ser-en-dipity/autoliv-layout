@@ -1,0 +1,33 @@
+<form nz-form [formGroup]="form">
+  <nz-form-item>
+    <nz-form-label [nzSpan]="5">移入库位</nz-form-label>
+
+    <nz-form-control [nzSpan]="6" style="padding-right: 10px">
+      <nz-select
+        formControlName="stockType"
+        (ngModelChange)="onStockTypeModelChange($event)"
+      >
+        <nz-option
+          *ngFor="let st of StockTypes"
+          [nzValue]="st"
+          [nzLabel]="st | stockTypeLabel"
+        ></nz-option>
+      </nz-select>
+    </nz-form-control>
+
+    <nz-form-control [nzSpan]="9">
+      <nz-select
+        nzShowSearch
+        nzAllowClear
+        formControlName="stockCell"
+        (ngModelChange)="onStockModelChange($event)"
+      >
+        <nz-option
+          *ngFor="let s of stockCells"
+          [nzValue]="s"
+          [nzLabel]="s.label"
+        ></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+</form>

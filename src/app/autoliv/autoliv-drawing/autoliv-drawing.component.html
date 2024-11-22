@@ -1,0 +1,22 @@
+<nz-page-header class="header">
+  <nz-page-header-title>产品图纸</nz-page-header-title>
+  <nz-page-header-extra>
+    <nz-upload
+      nzAction="/api/Files?bucket=icnc-erp-autoliv-spec" nzAccept="image/*"
+      [nzShowButton]="true" (nzChange)="onUploadDrawing($event)" [nzPreview]="handlePreview"
+    >
+      <button nz-button>
+        <span nz-icon nzType="upload"></span>
+        上传图纸
+      </button>
+    </nz-upload>
+  </nz-page-header-extra>
+</nz-page-header>
+
+<ng-container>
+  <div class="draw">
+    <nz-card class="form-card" nzTitle="产品图纸">
+      <img src="{{imageUrl}}" width="1200" height="800" alt=""/>
+    </nz-card>
+  </div>
+</ng-container>

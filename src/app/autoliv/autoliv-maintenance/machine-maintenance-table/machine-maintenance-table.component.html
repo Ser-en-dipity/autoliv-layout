@@ -1,0 +1,127 @@
+
+
+<nz-table
+  #upkeepTable
+  [nzSize]="'middle'"
+  [nzData]="keepTableData"
+  [nzBordered]="true"
+  [nzPageSizeOptions]="[20, 40, 60, 80, 100, 1000]"
+  [nzShowSizeChanger]="true"
+  [nzPageSize]="10"
+>
+  <thead>
+    <tr>
+      <th rowspan="2">项目</th>
+      <th rowspan="2">周期</th>
+      <th rowspan="2">点检内容</th>
+      <th rowspan="2">点检方法</th>
+      <th colspan="12">点检状况</th>
+    </tr>
+    <tr>
+      <th>1月</th>
+      <th>2月</th>
+      <th>3月</th>
+      <th>4月</th>
+      <th>5月</th>
+      <th>6月</th>
+      <th>7月</th>  
+      <th>8月</th>
+      <th>9月</th>
+      <th>10月</th>
+      <th>11月</th>
+      <th>12月</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    @for (item of upkeepTable.data; track item) {
+      <tr>
+        <td>{{ item.project }}</td>
+        <td>{{ item.cycle }}</td>
+        <td>{{ item.spotContent }}</td>
+        <td>
+          <a (click)="onClickNavigateToDoc()" style="color:blue">
+            {{ item.spotMethod }}
+          </a>
+        </td>
+        @if (isDateMatch[0]) { 
+          <td><input type="text" nz-input [(ngModel)]="editCache[item.id].data.date_pair[0]" /></td>
+        }
+        @else {
+          <td>{{ item.date_pair[0] }}</td>
+        }
+        @if (isDateMatch[1]) { 
+          <td><input type="text" nz-input [(ngModel)]="editCache[item.id].data.date_pair[1]" /></td>
+        }
+        @else {
+          <td>{{ item.date_pair[1] }}</td>
+        }
+        @if (isDateMatch[2]) { 
+          <td><input type="text" nz-input [(ngModel)]="editCache[item.id].data.date_pair[2]" /></td>
+        }
+        @else {
+          <td>{{ item.date_pair[2] }}</td>
+        }
+        @if (isDateMatch[3]) { 
+          <td><input type="text" nz-input [(ngModel)]="editCache[item.id].data.date_pair[3]" /></td>
+        }
+        @else {
+          <td>{{ item.date_pair[3] }}</td>
+        }
+        @if (isDateMatch[4]) { 
+          <td><input type="text" nz-input [(ngModel)]="editCache[item.id].data.date_pair[4]" /></td>
+        }
+        @else {
+          <td>{{ item.date_pair[4] }}</td>
+        }
+        @if (isDateMatch[5]) { 
+          <td><input type="text" nz-input [(ngModel)]="editCache[item.id].data.date_pair[5]" /></td>
+        }
+        @else {
+          <td>{{ item.date_pair[5] }}</td>
+        }
+        @if (isDateMatch[6]) { 
+          <td><input type="text" nz-input [(ngModel)]="editCache[item.id].data.date_pair[6]" /></td>
+        }
+        @else {
+          <td>{{ item.date_pair[6] }}</td>
+        }
+        @if (isDateMatch[7]) { 
+          <td><input type="text" nz-input [(ngModel)]="editCache[item.id].data.date_pair[7]" /></td>
+        }
+        @else {
+          <td>{{ item.date_pair[7] }}</td>
+        }
+        @if (isDateMatch[8]) { 
+          <td><input type="text" nz-input [(ngModel)]="editCache[item.id].data.date_pair[8]" /></td>
+        }
+        @else {
+          <td>{{ item.date_pair[8] }}</td>
+        }
+        @if (isDateMatch[9]) { 
+          <td><input type="text" nz-input [(ngModel)]="editCache[item.id].data.date_pair[9]" /></td>
+        }
+        @else {
+          <td>{{ item.date_pair[9] }}</td>
+        }
+        @if (isDateMatch[10]) { 
+          <td><input type="text" nz-input [(ngModel)]="editCache[item.id].data.date_pair[10]" /></td>
+        }
+        @else {
+          <td>{{ item.date_pair[10] }}</td>
+        }
+        @if (isDateMatch[11]) { 
+          <td><input type="text" nz-input [(ngModel)]="editCache[item.id].data.date_pair[11]" /></td>
+        }
+        @else {
+          <td>{{ item.date_pair[11] }}</td>
+        }
+      </tr>
+    }
+  </tbody>
+</nz-table>
+
+<div *nzModalFooter>
+  <button nz-button nzType="primary" (click)="onClickSave()">保存</button>
+  <button nz-button nzType="default" (click)="onClickCancel()">取消</button>
+</div>

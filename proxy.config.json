@@ -1,0 +1,33 @@
+{
+  "/api": {
+    "target": {
+      "host": "localhost",
+      "protocol": "http:",
+      "port": 5000
+    },
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "info"
+  },
+  "/graphql": {
+    "target": {
+      "host": "localhost",
+      "protocol": "http:",
+      "port": 5000
+    },
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "info"
+  },
+  "/scanner": {
+    "target": {
+      "host": "localhost",
+      "protocol": "https:",
+      "port": 5201
+    },
+    "secure": false,
+    "ws": true,
+    "changeOrigin": true,
+    "logLevel": "info"
+  }
+}

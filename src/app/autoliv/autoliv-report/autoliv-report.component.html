@@ -1,0 +1,40 @@
+<nz-page-header class="header">
+    <nz-page-header-title>奥托立夫生产报工</nz-page-header-title>
+</nz-page-header>
+
+<nz-card class="form-card">
+  <form  nz-form [formGroup]="form">
+    <div nz-row>
+      <div nz-col [nzSpan]="6"></div>
+      <div nz-col [nzSpan]="6">
+        <app-mo-search-box
+          (manufactureOrders)="onGetMos($event)"
+        ></app-mo-search-box>
+      </div>
+    </div>
+
+    <nz-form-item>
+        <nz-form-label [nzSpan]="6">流程卡</nz-form-label>
+        <nz-form-control [nzSpan]="6">
+            <input nz-input formControlName="log_number_search" placeholder="流程卡" />
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-divider></nz-divider>
+    <div style="text-align: right">
+      <button nz-button nzType="primary" (click)="onClickSearchButton()">
+        搜索
+      </button>
+    </div>
+  </form>
+
+</nz-card>
+
+<ng-container>
+    <div>
+        <qr-code value={{moUrl}} size="300" errorCorrectionLevel="M"></qr-code>
+    </div>
+    <div>
+        <qr-code value={{mtUrl}} size="300" errorCorrectionLevel="M"></qr-code>
+    </div>
+</ng-container>

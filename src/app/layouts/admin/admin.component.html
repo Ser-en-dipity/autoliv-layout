@@ -1,0 +1,93 @@
+<ng-container *ngIf="isMobile; else touchScreenTemplate">
+  <nz-layout>
+    <router-outlet></router-outlet>
+  </nz-layout>
+</ng-container>
+
+<ng-template #touchScreenTemplate>
+  <nz-layout class="app-layout">
+    <nz-sider class="menu-sidebar" nzCollapsible nzWidth="256px" nzBreakpoint="md" [nzCollapsed]="isTSCollapsed"
+      [nzTrigger]="null">
+      <div class="sidebar-logo">
+        <a target="_blank">
+          <img src="../../../assets/panda-svgrepo-com.svg" alt="logo" />
+          <h1>iCNC 精密</h1>
+        </a>
+      </div>
+      <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isTSCollapsed">
+        <li nz-submenu nzOpen nzTitle="监控" nzIcon="folder">
+          <ul>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="/admin/autoliv/autoliv-infra">产品基础信息</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="/admin/autoliv/autoliv-drawing">产品图纸</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="/admin/autoliv/autoliv-tools">刀具、程序</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="/admin/autoliv/autoliv-maintenance">设备操作指导书，设备点检记录</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="/admin/autoliv/autoliv-inspection">检验指导书及巡检记录</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="/admin/autoliv/autoliv-ng-history">历史不良履历记录</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="/admin/autoliv/autoliv-report">生产报工</a>
+            </li>
+          </ul>
+      </ul>
+    </nz-sider>
+
+    <nz-layout>
+      <nz-header>
+        <div class="app-header">
+          <span class="header-trigger" (click)="onClickCollapsed()">
+            <i class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
+          </span>
+
+          <div nz-dropdown [nzDropdownMenu]="menu">
+            <span class="header-setting">
+              <i nz-icon nzType="setting" nzTheme="outline" class="setting-icon"></i>
+            </span>
+          </div>
+
+        </div>
+      </nz-header>
+      <nz-content>
+        <p *ngIf="showDefault">
+          <img src="../../../assets/demo.jpg" width="1200" height="800"/>
+        </p>
+        <router-outlet (activate)="toggleDefault(false)" (deactivate)="toggleDefault(true)"></router-outlet>
+      </nz-content>
+
+      <nz-footer>iCNC 精密五金 &nbsp;&nbsp; &nbsp;&nbsp;
+        <i nz-icon nzType="copyright" nzTheme="outline"></i>
+        2024
+      </nz-footer>
+    </nz-layout>
+  </nz-layout>
+
+  <nz-dropdown-menu #menu="nzDropdownMenu">
+    <ul nz-menu>
+      <li>
+        <mat-card class="result">
+          <mat-card-content>
+            <section class="pc-section">
+              <mat-slide-toggle
+                  class="pc-margin"
+                  [(ngModel)]="onTouchScreenchecked"
+                  >
+                触摸屏
+              </mat-slide-toggle>
+            </section>
+          </mat-card-content>
+        </mat-card>
+      </li>
+    </ul>
+  </nz-dropdown-menu>
+
+</ng-template>

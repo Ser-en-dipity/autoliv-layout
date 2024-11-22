@@ -1,0 +1,127 @@
+<nz-page-header class="header">
+  <nz-page-header-title>历史不良履历记录</nz-page-header-title>
+  <nz-page-header-extra>
+    <button nz-button nzType="primary" (click)="onClickUpload()">
+      上传
+    </button>
+  </nz-page-header-extra>
+</nz-page-header>
+
+<ng-container>
+  <nz-card class="form-card" nzTitle="当前设备历史不良履历">
+    <form nz-form [formGroup]="form">
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6">机台号</nz-form-label>
+        <nz-form-control [nzSpan]="6">
+          <input nz-input formControlName="machineCode" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6">日期</nz-form-label>
+        <nz-form-control [nzSpan]="6">
+          <nz-range-picker formControlName="mainRange"></nz-range-picker>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6">工序</nz-form-label>
+        <nz-form-control [nzSpan]="6">
+          <input nz-input formControlName="workflowId" />
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+    <nz-divider></nz-divider>
+    <div style="text-align: right">
+      <button nz-button nzType="primary" (click)="onClickSearchButton()">
+        搜索
+      </button>
+    </div>
+
+
+    <nz-table
+      #deviceTable
+      [nzSize]="'middle'"
+      [nzData]="data"
+      [nzBordered]="true"
+      [nzPageSizeOptions]="[20, 40, 60, 80, 100, 1000]"
+      [nzShowSizeChanger]="true"
+      [nzPageSize]="100"
+    >
+      <thead>
+        <tr>
+          <th>日期</th>
+          <th>机台号</th>
+          <th>工序</th>
+        </tr>
+      </thead>
+  
+      <tbody>
+        <tr *ngFor="let item of deviceTable.data">
+          <td>
+            <a (click)="onClickNavigateToDoc(item)" style="color:blue">
+            {{ item.entryTime }}
+            </a>
+          </td>
+          <td>{{ item.machineCode }}</td>
+          <td>{{ item.workflowId }}</td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-card>
+</ng-container>
+
+<!-- <ng-container>
+  <nz-card class="form-card" nzTitle="本工序内所有设备发生的历史不良履历">
+    <form nz-form [formGroup]="form">
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6" nzRequired>机台号</nz-form-label>
+        <nz-form-control [nzSpan]="6">
+          <input nz-input formControlName="machineCode" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6">日期</nz-form-label>
+        <nz-form-control [nzSpan]="6">
+          <nz-range-picker formControlName="mainRange"></nz-range-picker>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+    <nz-divider></nz-divider>
+    <div style="text-align: right">
+      <button nz-button nzType="primary" (click)="onClickSearchButton()">
+        搜索
+      </button>
+      <button nz-button nzType="primary" (click)="onUploadMain()">
+        上传
+      </button>
+    </div>
+
+
+    <nz-table
+      #flowTable
+      [nzSize]="'middle'"
+      [nzData]="data"
+      [nzBordered]="true"
+      [nzPageSizeOptions]="[20, 40, 60, 80, 100, 1000]"
+      [nzShowSizeChanger]="true"
+      [nzPageSize]="100"
+    >
+      <thead>
+        <tr>
+          <th>日期</th>
+          <th>机台号</th>
+        </tr>
+      </thead>
+  
+      <tbody>
+        <tr *ngFor="let item of flowTable.data">
+          <td>
+            <a (click)="onClickNavigateToDoc(item)" style="color:blue">
+            {{ item.entryTime }}
+            </a>
+          </td>
+          <td>{{ item.machineCode }}</td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-card>
+</ng-container> -->

@@ -1,0 +1,28 @@
+<form nz-form [formGroup]="form">
+	<nz-form-item>
+		<nz-form-label [nzSpan]="6">名称/规格 片段</nz-form-label>
+		<nz-form-control [nzSpan]="12">
+			<input nz-input formControlName="codeOrSpecSearch" type="text" />
+		</nz-form-control>
+	</nz-form-item>
+
+	<nz-form-item>
+		<nz-form-label [nzSpan]="6">材质</nz-form-label>
+		<nz-form-control [nzSpan]="7">
+			<nz-select formControlName="raw" nzAllowClear nzPlaceHolder="请选择表面处理">
+				<nz-option *ngFor="let opt of rawOptions" [nzLabel]="opt | rawLabelApi"
+					[nzValue]="opt"></nz-option>
+			</nz-select>
+		</nz-form-control>
+	</nz-form-item>
+
+	<nz-form-item>
+		<nz-form-label [nzSpan]="6">形状</nz-form-label>
+		<nz-form-control [nzSpan]="7">
+			<nz-select formControlName="shape" nzAllowClear nzPlaceHolder="请选择材料">
+				<nz-option *ngFor="let opt of shapeOptions" [nzLabel]="opt | shapeLabelApi"
+					[nzValue]="opt"></nz-option>
+			</nz-select>
+		</nz-form-control>
+	</nz-form-item>
+</form>

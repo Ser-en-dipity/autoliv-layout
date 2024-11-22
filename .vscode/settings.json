@@ -1,0 +1,43 @@
+{
+  "editor.codeLens": true,
+  "editor.fontLigatures": true,
+  "editor.fontFamily": "'Jetbrains Mono', 'Cascadia Code', 'FiraCode-Retina', 'Operator Mono lig', Monaco, 'Courier New', monospace",
+  "editor.fontSize": 16,
+  "editor.formatOnSave": false,
+  "workbench.iconTheme": "vs-seti",
+  "workbench.colorTheme": "One Dark Pro Darker",
+  "workbench.editor.enablePreviewFromCodeNavigation": true,
+  "oneDarkPro.bold": false,
+  "oneDarkPro.italic": true,
+  "oneDarkPro.vivid": true,
+  "editor.stickyScroll.enabled": true,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "terminal.integrated.fontFamily": "'Hasklug NF', 'Hurmit Nerd Font'",
+  "terminal.integrated.fontSize": 14,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features",
+    "editor.suggest.insertMode": "replace"
+  },
+  "cSpell.words": [
+    "ASSETTYPE",
+    "DESTINATIONTYPE",
+    "HEATTREATMENT",
+    "instock",
+    "Makita",
+    "MATERIALSHAPE",
+    "MFGORDERSTATE",
+    "OOSTATE",
+    "OPENAPI",
+    "ORDERSTATE",
+    "OUTSOURCINGTYPE",
+    "POSTATE",
+    "PROCESSINGTYPE",
+    "SEMIPROCESS",
+    "STOCKTYPE",
+    "zxing"
+  ],
+}

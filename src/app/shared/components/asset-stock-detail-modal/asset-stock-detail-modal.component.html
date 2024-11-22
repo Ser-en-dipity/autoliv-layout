@@ -1,0 +1,45 @@
+<nz-table #batchTable [nzData]="batchTableData" nzShowPagination="false">
+  <thead>
+    <tr>
+      <th></th>
+      <th>序列号</th>
+      <th>日期</th>
+      <th>数量</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-template ngFor let-item [ngForOf]="batchTable.data">
+      <tr>
+        <td [(nzExpand)]="item.expand"></td>
+        <td>{{ item.serialNumber }}</td>
+        <td>{{ item.entryTime | date }}</td>
+        <td>{{ item.quantity }}</td>
+      </tr>
+      <tr [nzExpand]="item.expand">
+        <nz-table
+          #innerTable
+          [nzData]="item.records"
+          nzSize="small"
+          [nzFrontPagination]="false"
+          [nzScroll]="{ y: '960px' }"
+          [nzShowSizeChanger]="false"
+          [nzShowPagination]="false"
+        >
+          <thead>
+            <tr>
+              <th>库位</th>
+              <th>数量</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let record of innerTable.data">
+              <td>{{ record.stockCode }}</td>
+              <td>{{ record.quantity }}</td>
+            </tr>
+          </tbody>
+        </nz-table>
+      </tr>
+    </ng-template>
+  </tbody>
+</nz-table>
+<ng-template *ngFor="let semi of batchTableOfSemis"></ng-template>

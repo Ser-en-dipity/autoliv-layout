@@ -1,0 +1,11 @@
+<nz-select [nzMode]="'default'" nzPlaceHolder="选择供应商" nzAllowClear nzShowSearch nzServerSearch
+  [(ngModel)]="selectedSupplier" (nzOnSearch)="onSearch($event)" (ngModelChange)="onModelChange($event)">
+  <ng-container *ngFor="let option of options">
+    <nz-option *ngIf="!isLoading" [nzValue]="option" [nzLabel]="option | supplierOptionLabel">
+    </nz-option>
+  </ng-container>
+
+  <nz-option *ngIf="isLoading" nzDisabled nzCustomContent>
+    <i nz-icon nzType="loading" class="loading-icon"></i> Loading Data...
+  </nz-option>
+</nz-select>

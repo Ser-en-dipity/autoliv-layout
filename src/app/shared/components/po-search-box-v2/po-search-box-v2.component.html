@@ -1,0 +1,36 @@
+<form nz-form [formGroup]="form">
+	<nz-form-item>
+		<nz-form-label [nzSpan]="6">供应商</nz-form-label>
+		<nz-form-control [nzSpan]="12">
+			<app-supplier-search-box (supplier)="onGetSupplier($event)"
+				[preSelectedId]="preSelectedId"></app-supplier-search-box>
+		</nz-form-control>
+	</nz-form-item>
+
+	<nz-form-item>
+		<nz-form-label [nzSpan]="6">订单状态</nz-form-label>
+		<nz-form-control [nzSpan]="7">
+			<nz-select formControlName="finish" nzAllowClear nzPlaceHolder="订单状态">
+				<nz-option *ngFor="let opt of poStateOptions" [nzLabel]="opt | poStateLabel"
+					[nzValue]="opt"></nz-option>
+			</nz-select>
+		</nz-form-control>
+	</nz-form-item>
+
+	<nz-form-item>
+		<nz-form-label [nzSpan]="6">日期范围</nz-form-label>
+		<nz-form-control [nzSpan]="12">
+			<nz-range-picker formControlName="dateRange"></nz-range-picker>
+		</nz-form-control>
+
+	</nz-form-item>
+
+	<nz-form-item>
+		<nz-form-label [nzSpan]="6">名称片段</nz-form-label>
+		<nz-form-control [nzSpan]="7">
+			<input nz-input formControlName="codeOrNameSearch" type="text" />
+		</nz-form-control>
+	</nz-form-item>
+
+
+</form>

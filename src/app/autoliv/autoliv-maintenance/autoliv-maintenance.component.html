@@ -1,0 +1,129 @@
+<nz-page-header class="header">
+  <nz-page-header-title>设备操作指导书，设备点检记录</nz-page-header-title>
+</nz-page-header>
+
+<ng-container>
+  <nz-card class="form-card" nzTitle="设备操作指导书">
+    <div class="group" style="text-align: right">
+      <button nz-button nzType="primary" (click)="onClickNavigateToSpotCheckInstruction()">
+        点检指导书
+      </button>
+      <nz-divider nzType="vertical"></nz-divider>
+      <nz-upload
+          nzAction="/api/Files?bucket=icnc-erp-autoliv-spec"
+          nzAccept="application/pdf"
+          [nzShowButton]="true"
+          (nzChange)="onUploadSpotInstruction($event)"
+          [nzPreview]="handlePreview"
+        >
+        <button nz-button>
+          <span nz-icon nzType="upload"></span>
+          上传点检指导书
+        </button>
+      </nz-upload>
+      <nz-divider nzType="vertical"></nz-divider>
+      <button nz-button nzType="primary" (click)="onClickNavigateToDeviceOperationInstruction()">
+        设备操作指导书
+      </button>
+      <nz-divider nzType="vertical"></nz-divider>
+      <nz-upload
+          nzAction="/api/Files?bucket=icnc-erp-autoliv-spec"
+          nzAccept="application/pdf"
+          [nzShowButton]="true"
+          (nzChange)="onUploadDeviceOp($event)"
+          [nzPreview]="handlePreview"
+        >
+        <button nz-button>
+          <span nz-icon nzType="upload"></span>
+          上传操作指导书
+        </button>
+      </nz-upload>
+    </div>
+  </nz-card>
+</ng-container> 
+
+<ng-container>
+  <nz-card class="form-card" nzTitle="设备点检表">
+    <div style="text-align: right">
+      <button nz-button nzType="primary" (click)="onClickNavigateToDeviceInspection()">
+        点检表
+      </button>
+      <nz-divider nzType="vertical"></nz-divider>
+      <button nz-button nzType="primary" (click)="onUploadSpotTable()">
+        上传
+      </button>
+    </div>
+  </nz-card> 
+</ng-container>
+
+<ng-container>
+  <nz-card class="form-card" nzTitle="机台保养表">
+    <div style="text-align: right">
+      <button nz-button nzType="primary" (click)="onClickNavigateToMachineMaintenance()">
+        保养表
+      </button>
+      <nz-divider nzType="vertical"></nz-divider>
+      <button nz-button nzType="primary" (click)="onUploadMaintenanceTable()">
+        上传
+      </button>
+    </div>
+  </nz-card> 
+</ng-container>
+
+<ng-container>
+  <nz-card class="form-card" nzTitle="设备维修履历">
+    <form nz-form [formGroup]="form">
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6" nzRequired>机台号</nz-form-label>
+        <nz-form-control [nzSpan]="6">
+          <input nz-input formControlName="machineCode" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6">日期</nz-form-label>
+        <nz-form-control [nzSpan]="6">
+          <nz-range-picker formControlName="mainRange"></nz-range-picker>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+    <nz-divider></nz-divider>
+    <div style="text-align: right">
+      <button nz-button nzType="primary" (click)="onClickSearchButton()">
+        搜索
+      </button>
+      <nz-divider nzType="vertical"></nz-divider>
+      <button nz-button nzType="primary" (click)="onUploadMain()">
+        上传
+      </button>
+    </div>
+
+
+    <nz-table
+      #mainTable
+      [nzSize]="'middle'"
+      [nzData]="data"
+      [nzBordered]="true"
+      [nzPageSizeOptions]="[20, 40, 60, 80, 100, 1000]"
+      [nzShowSizeChanger]="true"
+      [nzPageSize]="100"
+    >
+      <thead>
+        <tr>
+          <th>日期</th>
+          <th>机台号</th>
+        </tr>
+      </thead>
+  
+      <tbody>
+        <tr *ngFor="let item of mainTable.data">
+          <td>
+            <a (click)="onClickNavigateToDoc(item)" style="color:blue">
+            {{ item.entryTime }}
+            </a>
+          </td>
+          <td>{{ item.machineCode }}</td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-card>
+</ng-container>

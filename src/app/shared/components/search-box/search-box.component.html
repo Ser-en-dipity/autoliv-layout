@@ -1,0 +1,102 @@
+<!-- <p>search-box works!</p>
+<ng-container *ngIf="inline">
+  <div nz-row style="margin-bottom: 18px">
+    <ng-container *ngIf="optionVisible">
+      <div nz-col style="display: inline-block; margin-right: 10px">
+        <nz-radio-group [(ngModel)]="selectedOption">
+          <label
+            *ngFor="let option of options"
+            nz-radio-button
+            [nzValue]="option"
+          >
+            <span>{{ option | searchOptionLabel }}</span>
+          </label>
+        </nz-radio-group>
+      </div>
+    </ng-container>
+
+    <div nz-col style="display: inline-block; flex: 1">
+      <nz-select
+        [nzMode]="multiple ? 'multiple' : 'default'"
+        nzAllowClear
+        nzShowSearch
+        nzServerSearch
+        [(ngModel)]="selectedModels"
+      >
+        <ng-container *ngFor="let option of searchResults">
+          <nz-option
+            *ngIf="!isLoading"
+            [nzValue]="option"
+            [nzLabel]="option.description"
+          ></nz-option>
+        </ng-container>
+
+        <nz-option *ngIf="isLoading" nzDisabled nzCustomContent>
+          <i nz-icon nzType="loading" class="loading-icon"></i> Loading Data...
+        </nz-option>
+      </nz-select>
+    </div>
+  </div>
+</ng-container>
+
+<nz-divider [nzDashed]="true" [hidden]="isCollapse"></nz-divider>
+<form nz-form [formGroup]="advancedSearchForm" [hidden]="isCollapse">
+  <nz-form-item>
+    <nz-form-label [nzSm]="4" [nzXs]="24">日期选择</nz-form-label>
+    <nz-form-control [nzSm]="8" [nzXs]="24">
+      <nz-range-picker [nzShowTime]="false" formControlName="date">
+      </nz-range-picker>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="4">客户</nz-form-label>
+    <nz-form-control [nzSm]="12">
+      <nz-select
+        formControlName="customerId"
+        nzAllowClear
+        nzShowSearch
+        nzServerSearch
+        (nzOnSearch)="onSearchCustomer($event)"
+      >
+        <ng-container *ngFor="let option of customerOptions">
+          <nz-option
+            *ngIf="!customerSearchLoading"
+            [nzValue]="option.id"
+            [nzLabel]="option | generalSearchBoxLabel: customerOpt"
+          >
+          </nz-option>
+        </ng-container>
+
+        <nz-option *ngIf="customerSearchLoading" nzDisabled nzCustomContent>
+          <i nz-icon nzType="loading" class="loading-icon"></i> Loading Data...
+        </nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="4">产品</nz-form-label>
+    <nz-form-control [nzSpan]="20">
+      <nz-select
+        formControlName="productIds"
+        nzAllowClear
+        nzShowSearch
+        nzServerSearch
+        (nzOnSearch)="onSearchProduct($event)"
+        nzMode="multiple"
+      >
+        <ng-container *ngFor="let option of productOptions">
+          <nz-option
+            *ngIf="!productSearchLoading"
+            [nzValue]="option.id"
+            [nzLabel]="option | generalSearchBoxLabel: productOpt"
+          >
+          </nz-option>
+        </ng-container>
+
+        <nz-option *ngIf="productSearchLoading" nzDisabled nzCustomContent>
+          <i nz-icon nzType="loading" class="loading-icon"></i> Loading Data...
+        </nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+</form> -->

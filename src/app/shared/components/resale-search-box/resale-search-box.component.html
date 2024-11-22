@@ -1,0 +1,22 @@
+<nz-select
+  [nzMode]="multiple ? 'multiple' : 'default'"
+  nzPlaceHolder="转卖单"
+  nzAllowClear
+  nzShowSearch
+  nzServerSearch
+  [(ngModel)]="selectedResults"
+  (nzOnSearch)="onSearch($event)"
+  (ngModelChange)="onModelChange($event)"
+>
+  <ng-container *ngFor="let option of options">
+    <nz-option
+      *ngIf="!isLoading"
+      [nzValue]="option"
+      [nzLabel]="option.orderNumber!"
+    >
+    </nz-option>
+  </ng-container>
+  <nz-option *ngIf="isLoading" nzDisabled nzCustomContent>
+    <i nz-icon nzType="loading" class="loading-icon"></i> Loading Data...
+  </nz-option>
+</nz-select>
