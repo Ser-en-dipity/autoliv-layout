@@ -7,6 +7,7 @@ import { AutolivMaintenanceComponent } from './autoliv-maintenance/autoliv-maint
 import { AutolivInspectionComponent } from './autoliv-inspection/autoliv-inspection.component';
 import { AutolivNgHistoryComponent } from './autoliv-ng-history/autoliv-ng-history.component';
 import { AutolivReportComponent } from './autoliv-report/autoliv-report.component';
+import { CapabilityIndexDisplayComponent } from './capability-index-display/capability-index-display.component';
 import { authGuard } from '../auth.guard';
 
 const routes: Routes = [
@@ -17,7 +18,7 @@ const routes: Routes = [
   { path: 'autoliv-inspection', component: AutolivInspectionComponent },
   { path: 'autoliv-ng-history', component: AutolivNgHistoryComponent },
   { path: 'autoliv-report', component: AutolivReportComponent, canActivate: [authGuard] },
-  
+  { path: 'capability-display', component: CapabilityIndexDisplayComponent },
 ];
 
 @NgModule({

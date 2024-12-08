@@ -31,6 +31,8 @@ import { DigitalMicroMeterComponent } from './autoliv-inspection/digital-micro-m
 import { AirGaugeComponent } from './autoliv-inspection/air-gauge/air-gauge.component';
 import { ProfilerComponent } from './autoliv-inspection/profiler/profiler.component';
 import { ProjectorComponent } from './autoliv-inspection/projector/projector.component';
+import { CapabilityIndexDisplayComponent } from './capability-index-display/capability-index-display.component';
+import { LineChartComponent } from './capability-index-display/line-chart/line-chart.component';
 
 import { SharedModule } from '../shared/shared.module';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
@@ -67,6 +69,8 @@ import { AutolivRoutingModule } from './autoliv-routing.module';
     AirGaugeComponent,
     ProfilerComponent,
     ProjectorComponent,
+    CapabilityIndexDisplayComponent,
+    LineChartComponent,
   ],
   imports: [
     CommonModule,
